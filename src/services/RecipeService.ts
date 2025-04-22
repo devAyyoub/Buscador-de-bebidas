@@ -1,5 +1,11 @@
-export async function getCategories () {
+import axios from "axios";
+import { CategoriesAPIResponseSchema } from "../utils/recipes-schema";
 
-    console.log('desde recipe serivce');
-    
+export async function getCategories() {
+  const url = "https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list";
+  const { data: data } = await axios.get(url);
+  const result = CategoriesAPIResponseSchema.safeParse(data);
+  if (result.success) {
+    return result.data
+  }
 }
