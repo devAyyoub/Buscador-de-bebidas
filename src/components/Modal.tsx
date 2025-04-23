@@ -11,16 +11,16 @@ export default function Modal() {
   const renderIngredients = () => {
     const ingredients: JSX.Element[] = [];
     for (let i = 1; i <= 6; i++) {
-        const ingredient = selecedRecipe[`strIngredient${i}` as keyof Recipe]
-        const measure = selecedRecipe[`strMeasure${i}` as keyof Recipe]
+      const ingredient = selecedRecipe[`strIngredient${i}` as keyof Recipe];
+      const measure = selecedRecipe[`strMeasure${i}` as keyof Recipe];
 
-        if (ingredient && measure) {
-            ingredients.push(
-                <li key={i} className="text-lg font-normal">
-                    {ingredient} - {measure}
-                </li>
-            )
-        }
+      if (ingredient && measure) {
+        ingredients.push(
+          <li key={i} className="text-lg font-normal">
+            {ingredient} - {measure}
+          </li>
+        );
+      }
     }
     return ingredients;
   };
@@ -78,6 +78,17 @@ export default function Modal() {
                   </Dialog.Title>
 
                   <p className="text-lg">{selecedRecipe.strInstructions}</p>
+                  <div className="mt-5 flex justify-between gap-4">
+                    <button
+                      className="w-full rounded bg-gray-600 p-3 font-bold uppercase text-white shadow hover:bg-gray-500"
+                      onClick={closeModal}
+                    >
+                      Cerrar
+                    </button>
+                    <button className="w-full rounded bg-orange-600 p-3 font-bold uppercase text-white shadow hover:bg-orange-500">
+                      Agregar a favoritos
+                    </button>
+                  </div>
                 </Dialog.Panel>
               </Transition.Child>
             </div>
