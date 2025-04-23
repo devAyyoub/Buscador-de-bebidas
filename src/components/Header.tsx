@@ -30,13 +30,11 @@ export default function Header() {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // TODO: Validar
     if (Object.values(searchFilters).includes("")) {
       showNotification({text: 'Todos los campos son obligatorios', error: true})
       return;
     }
 
-    // Consultar las recetas
     searchRecipes(searchFilters)
     
   };
