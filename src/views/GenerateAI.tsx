@@ -3,17 +3,19 @@ import { useAppStore } from "../stores/useAppStore";
 
 export default function GenerateAI() {
   const showNotification = useAppStore((state) => state.showNotification);
+  const generateRecipe = useAppStore(state => state.generateRecipe);
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("desde handleSubmit");
 
     const form = new FormData(e.currentTarget);
     const prompt = form.get("prompt") as string;
 
     if (prompt.trim() === "") {
-        showNotification({text: 'La busqueda no puede ir vacía', error: true})
-        return
+      showNotification({ text: "La busqueda no puede ir vacía", error: true });
+      return;
     }
+
+    await generateRecipe(prompt)
   };
   return (
     <>
