@@ -57,7 +57,7 @@ export default function GenerateAI() {
             </button>
           </div>
         </form>
-        {isGenerating && <p>Generando...</p>}
+        {isGenerating && <p className="text-center animate-wiggle">Generando...</p>}
         <div className="py-10 whitespace-pre-wrap">{recipe}</div>
       </div>
     </>
